@@ -2,7 +2,7 @@
 
 This is a quick and dirty tool for reading in a [Consul](https://www.consul.io) snapshot file from the raft directory and dumping some statistics about which types of data are consuming the space.
 
-It's fairly basic and quick and can certainly be made easier to use - PRs welcome. We may consider merging this into a more official tool or even the Consul binary if it prooves useful.
+It's fairly basic and quick and can certainly be made easier to use - PRs welcome. We may consider merging this into a more official tool or even the Consul binary if it proves useful.
 
 ## Building
 
@@ -20,7 +20,7 @@ If you want to cross compile it for Linux from another OS (e.g. so you can run t
 
  ## Usage
 
- There is only one way to use this an no options currently. It reads from STDIN so:
+ There is only one way to use this and it has no options currently. It reads from STDIN so:
 
  ```sh
  $ cat /tmp/consul/raft/sna....32/state.bin | consul-snapshot-tool
@@ -39,7 +39,7 @@ If you want to cross compile it for Linux from another OS (e.g. so you can run t
 
  ### Backup Snapshots
 
- To inspect a snapshot made using `consul snapshot save` you first need to extract the raw snapshot file. The snapshot is actually a zipped tar archive of the snapshot and some metadata.
+To inspect a snapshot made using `consul snapshot save` you first need to extract the raw snapshot file. The snapshot is actually a zipped tar archive of the snapshot and some metadata.
 
  ```sh
  $ tar -xzf backup.snap
