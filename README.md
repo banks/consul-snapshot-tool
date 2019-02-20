@@ -4,6 +4,8 @@ This is a quick and dirty tool for reading in a [Consul](https://www.consul.io) 
 
 It's fairly basic and quick and can certainly be made easier to use - PRs welcome. We may consider merging this into a more official tool or even the Consul binary if it prooves useful.
 
+**NOTE: this doesn't currently work for snapshots saves using `consul snapshot save` since those have some extra meta data.** PRs welcome.
+
 ## Building
 
 If you have a working Go toolchain you should be able to install this with:
