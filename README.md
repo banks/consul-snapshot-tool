@@ -4,8 +4,6 @@ This is a quick and dirty tool for reading in a [Consul](https://www.consul.io) 
 
 It's fairly basic and quick and can certainly be made easier to use - PRs welcome. We may consider merging this into a more official tool or even the Consul binary if it prooves useful.
 
-**NOTE: this doesn't currently work for snapshots saves using `consul snapshot save` since those have some extra meta data.** PRs welcome.
-
 ## Building
 
 If you have a working Go toolchain you should be able to install this with:
@@ -38,3 +36,21 @@ If you want to cross compile it for Linux from another OS (e.g. so you can run t
 ---------------------- -------- ------------
                          TOTAL:      607.2KB
  ```
+
+ ### Backup Snapshots
+
+ To inspect a snapshot made using `consul snapshot save` you first need to extract the raw snapshot file. The snapshot is actually a zipped tar archive of the snapshot and some metadata.
+
+ ```sh
+ $ tar -xzf backup.snap
+ $ cat state.bin | consul-snapshot-tool
+            Record Type    Count   Total Size
+---------------------- -------- ------------
+                   KVS     4461      508.8KB
+              Register      104         57KB
+                 Index        9         220B
+             Autopilot        1         188B
+ CoordinateBatchUpdate        1         167B
+---------------------- -------- ------------
+                         TOTAL:      566.3KB
+```
