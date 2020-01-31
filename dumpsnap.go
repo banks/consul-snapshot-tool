@@ -34,6 +34,8 @@ func (s statSlice) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 var typeNames []string
 
 func init() {
+	// I have commented guesses as to what these additional types are, based on:
+	// https://github.com/hashicorp/consul/blob/master/agent/consul/fsm/snapshot_oss.go
 	typeNames = []string{
 		"Register",
 		"Deregister",
@@ -56,6 +58,16 @@ func init() {
 		"ACLTokenDelete",
 		"ACLPolicySet",
 		"ACLPolicyDelete",
+		"ConsulType1",  // ConfigEntrySet
+		"ConsulType2",  // ConfigEntryDelete
+		"ConsulType3",  // ACLRoleSet
+		"ConsulType4",  // ACLRoleDelete
+		"ConsulType5",  // ConfigEntrySet
+		"ConsulType6",  // ConfigEntryDelete
+		"ConsulType7",  // ACLBindingRuleSet
+		"ConsulType8",  // ACLBindingRuleDelete
+		"ConsulType9",  // ACLAuthMethodSet
+		"ConsulType10", // ACLAuthMethodDelete
 	}
 }
 
