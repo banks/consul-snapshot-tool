@@ -34,6 +34,10 @@ func (s statSlice) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 var typeNames []string
 
 func init() {
+	// These mirror the const values from
+	// https://github.com/hashicorp/consul/blob/master/agent/structs/structs.go#L37-L70
+	// (line numbers may change but I want to link to master so it shows most recent 
+	// constants).
 	typeNames = []string{
 		"Register",
 		"Deregister",
@@ -56,6 +60,15 @@ func init() {
 		"ACLTokenDelete",
 		"ACLPolicySet",
 		"ACLPolicyDelete",
+		"ConnectCALeafRequestType",
+		"ConfigEntryRequestType",
+		"ACLRoleSetRequestType",
+		"ACLRoleDeleteRequestType",
+		"ACLBindingRuleSetRequestType",
+		"ACLBindingRuleDeleteRequestType",
+		"ACLAuthMethodSetRequestType",
+		"ACLAuthMethodDeleteRequestType",
+		"ChunkingStateType",
 	}
 }
 
