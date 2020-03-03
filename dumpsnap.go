@@ -34,8 +34,10 @@ func (s statSlice) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 var typeNames []string
 
 func init() {
-	// I have commented guesses as to what these additional types are, based on:
-	// https://github.com/hashicorp/consul/blob/master/agent/consul/fsm/snapshot_oss.go
+	// These mirror the const values from
+	// https://github.com/hashicorp/consul/blob/master/agent/structs/structs.go#L37-L70
+	// (line numbers may change but I want to link to master so it shows most recent 
+	// constants).
 	typeNames = []string{
 		"Register",
 		"Deregister",
@@ -58,16 +60,15 @@ func init() {
 		"ACLTokenDelete",
 		"ACLPolicySet",
 		"ACLPolicyDelete",
-		"ConsulType1",  // ConfigEntrySet
-		"ConsulType2",  // ConfigEntryDelete
-		"ConsulType3",  // ACLRoleSet
-		"ConsulType4",  // ACLRoleDelete
-		"ConsulType5",  // ConfigEntrySet
-		"ConsulType6",  // ConfigEntryDelete
-		"ConsulType7",  // ACLBindingRuleSet
-		"ConsulType8",  // ACLBindingRuleDelete
-		"ConsulType9",  // ACLAuthMethodSet
-		"ConsulType10", // ACLAuthMethodDelete
+		"ConnectCALeafRequestType",
+		"ConfigEntryRequestType",
+		"ACLRoleSetRequestType",
+		"ACLRoleDeleteRequestType",
+		"ACLBindingRuleSetRequestType",
+		"ACLBindingRuleDeleteRequestType",
+		"ACLAuthMethodSetRequestType",
+		"ACLAuthMethodDeleteRequestType",
+		"ChunkingStateType",
 	}
 }
 
