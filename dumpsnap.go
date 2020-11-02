@@ -181,7 +181,7 @@ func main() {
 				}
 			}
 		}
-		// fmt.Printf("%v\n", kstats)
+
 		stats[int(msgType[0])] = s
 	}
 
