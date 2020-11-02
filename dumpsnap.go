@@ -36,7 +36,7 @@ var typeNames []string
 func init() {
 	// These mirror the const values from
 	// https://github.com/hashicorp/consul/blob/master/agent/structs/structs.go#L37-L70
-	// (line numbers may change but I want to link to master so it shows most recent 
+	// (line numbers may change but I want to link to master so it shows most recent
 	// constants).
 	typeNames = []string{
 		"Register",
@@ -69,6 +69,8 @@ func init() {
 		"ACLAuthMethodSetRequestType",
 		"ACLAuthMethodDeleteRequestType",
 		"ChunkingStateType",
+		"FederationStateRequestType",
+		"SystemMetadataRequestType",
 	}
 }
 
@@ -119,7 +121,13 @@ func main() {
 		// Decode
 		s := stats[int(msgType[0])]
 		if s.Name == "" {
-			s.Name = typeNames[int(msgType[0])]
+			if int(msgType[0]) < len(typeNames) {
+				s.Name = typeNames[int(msgType[0])]
+			} else {
+				fmt.Printf("WARN: Unknown message type: %v\n", int(msgType[0]))
+				fmt.Println("WARN: Probably needs updating from https://github.com/hashicorp/consul/blob/master/agent/structs/structs.go#L37-L70")
+				fmt.Println()
+			}
 		}
 
 		var val interface{}
